@@ -20,3 +20,32 @@ AES-256 CBC is used to encrypt the backup files.
 The [bash script](/backup_to_gdrive.sh/) and Crontab are used to automate the backup process.
 
 ## Setup
+1. Install rclone, a command-line program to manage files in cloud storage on Linux/macOS/BSD system:
+```bash
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
+```
+See [here](rclone.org/install/) for installation guidelines according to your system.
+
+2. Run the following command to config rclone:
+```bash
+rclone config
+```
+For the prompts to configure to a new remote for Google Drive:
+a. Enter 'n' for New remote
+b. Enter 'google_drive' for name for new remote
+c. Enter 'drive' for Type of storage to configure
+d. Press enter (or blank) for Client ID
+e. Press enter (or blank) for Secret
+f. Enter '1' for Scope
+g. Press enter (or blank) for Service Account Credentials
+h. Enter 'n' for Edit advanced config?
+i. Enter 'y' for Use web browser to automatically authenticate rclone with remote?
+j. Enter 'n' for Configure this as a Shared Drive (Team Drive)?
+k. Enter 'y' for Keep this "google_drive" remote?
+
+3. Copy the [bash script](/backup_to_gdrive.sh/) and adjust the directory of source and backup folder of the files you want to backup accordingly.
+
+4. Save the script and make the script executable:
+```bash 
+chmod +x /path/to/backup_to_gdrive.sh
+```
